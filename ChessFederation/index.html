@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCF - Home</title>
+    <style>
+        :root { 
+            --primary: #1e1b4b;     /* Deep volcanic slate */
+            --secondary: #f97316;   /* Fiery orange matching your logo */
+            --dark: #090514;        /* Dark obsidian background */
+            --light: #f8fafc;       /* Crisp ice white text */
+            --accent: #ef4444;      /* Intense red for badges */
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+        body { background-color: var(--dark); color: var(--light); display: flex; flex-direction: column; min-height: 100vh; }
+        header { background-color: var(--primary); padding: 1rem 2rem; border-bottom: 2px solid var(--secondary); display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--secondary); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .logo-img { height: 40px; width: 40px; border-radius: 50%; border: 2px solid var(--secondary); object-fit: cover; }
+        nav a { color: var(--light); text-decoration: none; margin-left: 1.5rem; font-weight: 500; }
+        nav a:hover, nav a.active { color: var(--secondary); }
+        .container { max-width: 1100px; margin: auto; padding: 2rem 1rem; flex: 1; text-align: center; }
+        .hero { padding: 4rem 1rem; background: linear-gradient(rgba(9, 5, 20, 0.85), rgba(9, 5, 20, 0.85)), url('logo.png') center/cover; border-radius: 12px; border: 1px solid #334155; }
+        h1 { font-size: 3rem; margin-bottom: 1rem; color: var(--light); }
+        p { font-size: 1.2rem; color: #cbd5e1; margin-bottom: 2rem; }
+        .btn { background-color: var(--secondary); color: var(--dark); padding: 0.75rem 1.5rem; border: none; border-radius: 6px; font-weight: bold; text-decoration: none; display: inline-block; transition: transform 0.2s; }
+        .btn:hover { transform: translateY(-2px); }
+        footer { background-color: #020617; text-align: center; padding: 1.5rem; font-size: 0.85rem; color: #64748b; margin-top: auto; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="GCF Logo" class="logo-img" onerror="this.style.display='none'"> 👑 GCF
+        </a>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="leaderboard.html">Leaderboard</a>
+            <a href="tournaments.html">Tournaments</a>
+            <a href="titles.html">Titles</a>
+        </nav>
+    </header>
+    <div class="container">
+        <section class="hero">
+            <h1>Global Chess Federation</h1>
+            <p>The ultimate free-to-play online chess community. Compete, rank up, and earn titles.</p>
+            <a href="https://www.chess.com/club/global-chess-federation-gcf-official" target="_blank" class="btn">Join Our Chess.com Club</a>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2026 GCF. Disclaimer: Independent online gaming community. Not affiliated with FIDE or Chess.com.</p>
+    </footer>
+</body>
+</html>

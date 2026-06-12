@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCF - Titles</title>
+    <style>
+        :root { 
+            --primary: #1e1b4b;     /* Deep volcanic slate */
+            --secondary: #f97316;   /* Fiery orange matching your logo */
+            --dark: #090514;        /* Dark obsidian background */
+            --light: #f8fafc;       /* Crisp ice white text */
+            --accent: #ef4444;      /* Intense red for badges */
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+        body { background-color: var(--dark); color: var(--light); display: flex; flex-direction: column; min-height: 100vh; }
+        header { background-color: var(--primary); padding: 1rem 2rem; border-bottom: 2px solid var(--secondary); display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--secondary); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .logo-img { height: 40px; width: 40px; border-radius: 50%; border: 2px solid var(--secondary); object-fit: cover; }
+        nav a { color: var(--light); text-decoration: none; margin-left: 1.5rem; font-weight: 500; }
+        nav a:hover, nav a.active { color: var(--secondary); }
+        .container { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; flex: 1; }
+        h2 { font-size: 2rem; color: var(--secondary); text-align: center; margin-bottom: 1.5rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .card { background-color: var(--primary); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--secondary); }
+        .badge { background-color: var(--accent); color: var(--light); padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem; font-weight: bold; display: inline-block; margin-bottom: 0.5rem; }
+        footer { background-color: #020617; text-align: center; padding: 1.5rem; font-size: 0.85rem; color: #64748b; margin-top: auto; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="GCF Logo" class="logo-img" onerror="this.style.display='none'"> 👑 GCF
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="leaderboard.html">Leaderboard</a>
+            <a href="tournaments.html">Tournaments</a>
+            <a href="titles.html" class="active">Titles</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h2>Federation Titles</h2>
+        <div class="grid">
+            <div class="card">
+                <span class="badge">GCFCM</span>
+                <h3>Global Chess Federation Candidate Master</h3>
+                <p>Awarded to players who reach a verified rating of 2200+ Elo on our platform.</p>
+            </div>
+            <div class="card">
+                <span class="badge">GCFM</span>
+                <h3>Global Chess Federation Master</h3>
+                <p>Awarded to players who successfully push their rating to 2300+ Elo.</p>
+            </div>
+            <div class="card">
+                <span class="badge">GCFIM</span>
+                <h3>Global Chess Federation International Master</h3> <!-- Fixed spelling mistake -->
+                <p>Awarded automatically upon crossing the 2400 Elo milestone on GCF.</p>
+            </div>
+            <div class="card">
+                <span class="badge">GCFGM</span>
+                <h3>Global Chess Federation Grandmaster</h3>
+                <p>Awarded strictly to winners of the Annual eWorldcup or players who reach 2500+ Elo.</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2026 GCF. Disclaimer: Independent online gaming community. Not affiliated with FIDE or Chess.com.</p>
+    </footer>
+</body>
+</html>
