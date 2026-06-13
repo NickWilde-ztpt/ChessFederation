@@ -1,110 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GCF - About Us</title>
-  <style>
-    /* This copies your exact dark gaming theme */
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
-      color: #ffffff;
-      min-height: 100vh;
-    }
-
-    /* Navigation Bar */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      background-color: rgba(26, 26, 46, 0.8);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-      color: #ff6b6b; /* Matching your orange/red accent */
-      text-decoration: none;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav ul li a {
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 16px;
-      transition: color 0.3s;
-    }
-
-    nav ul li a:hover {
-      color: #ff6b6b;
-    }
-
-    /* About Content Layout */
-    .about-container {
-      max-width: 800px;
-      margin: 60px auto;
-      padding: 40px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 15px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-
-    h1 {
-      color: #ff6b6b;
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: #cdcdff;
-      margin-bottom: 20px;
-    }
-
-    .highlight-box {
-      border-left: 4px solid #ff6b6b;
-      padding-left: 20px;
-      margin: 30px 0;
-      font-style: italic;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCF - About Us</title>
+    <style>
+        :root { 
+            --primary: #1e1b4b;     /* Deep volcanic slate */
+            --secondary: #f97316;   /* Fiery orange matching your logo */
+            --dark: #090514;        /* Dark obsidian background */
+            --light: #f8fafc;       /* Crisp ice white text */
+            --accent: #ef4444;      /* Intense red for badges */
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+        body { background-color: var(--dark); color: var(--light); display: flex; flex-direction: column; min-height: 100vh; }
+        header { background-color: var(--primary); padding: 1rem 2rem; border-bottom: 2px solid var(--secondary); display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--secondary); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .logo-img { height: 40px; width: 40px; border-radius: 50%; border: 2px solid var(--secondary); object-fit: cover; }
+        nav a { color: var(--light); text-decoration: none; margin-left: 1.5rem; font-weight: 500; }
+        nav a:hover, nav a.active { color: var(--secondary); }
+        .container { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; flex: 1; }
+        
+        /* Grid layout for structured reading */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+        .card { background-color: var(--primary); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--secondary); }
+        .card h3 { margin-bottom: 0.5rem; color: var(--secondary); font-size: 1.3rem; }
+        .card p { color: #cbd5e1; font-size: 1rem; line-height: 1.6; }
+        
+        /* Note Highlight Box */
+        .note-box { background-color: #1e293b; border-left: 4px solid var(--accent); padding: 1.5rem; border-radius: 6px; margin-top: 2rem; }
+        .note-box h3 { color: var(--accent); margin-bottom: 0.5rem; }
+        .note-box p { color: #cbd5e1; }
+        
+        h2 { font-size: 2rem; color: var(--secondary); text-align: center; margin-bottom: 1.5rem; }
+        footer { background-color: #020617; text-align: center; padding: 1.5rem; font-size: 0.85rem; color: #64748b; margin-top: auto; }
+    </style>
 </head>
 <body>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="GCF Logo" class="logo-img" onerror="this.style.display='none'"> 👑 GCF
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="leaderboard.html">Leaderboard</a>
+            <a href="tournaments.html">Tournaments</a>
+            <a href="titles.html">Titles</a>
+            <a href="about.html" class="active">About</a>
+        </nav>
+    </header>
 
-  <nav>
-    <a href="./index.html" class="logo">GCF</a>
-    <ul>
-      <li><a href="./index.html">Home</a></li>
-      <li><a href="./leaderboard.html">Leaderboard</a></li>
-      <li><a href="./tournaments.html">Tournaments</a></li>
-      <li><a href="./titles.html">Titles</a></li>
-      <li><a href="./about.html" style="color: #ff6b6b;">About</a></li>
-    </ul>
-  </nav>
+    <div class="container">
+        <h2>About the Federation</h2>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>What is GCF?</h3>
+                <p>Global Chess Federation is a separate world of Chess. It is an independent digital ecosystem built for competitive players to connect, compete, win matches, and earn exclusive ranks.</p>
+            </div>
+            
+            <div class="card">
+                <h3>How does it function?</h3>
+                <p>GCF runs entirely as an online-only platform utilizing Chess.com clubs. We handle the community management, record rankings, and organize community tournaments, events, and custom e-World Cups.</p>
+            </div>
+        </div>
 
-  <div class="about-container">
-    <h1>What is GCF - Global Chess Federation?</h1>
-    <p>GCF - Global Chess Federation is a separate world of Chess. Here, you can compete, win and earn titles.</p>
-    <h1>How does GCF function?</h1>
-    <p>GCF functions only on an online platform, Chess.com. We organize tournaments, events and also e-World Cups.</p>
-    <h1>NOTE</h1>
-    <p>We do not offer or claim money in any actions related to the federation.</p>
-  </div>
+        <!-- Note Section Box -->
+        <div class="note-box">
+            <h3>⚠️ IMPORTANT NOTICE</h3>
+            <p>We operate strictly as a free-to-play hobby community. Global Chess Federation does not collect entry fees, charge for memberships, or deal with any cash prizes or transactions in any capacity.</p>
+        </div>
+    </div>
 
+    <footer>
+        <p>&copy; 2026 GCF. Disclaimer: Independent online gaming community. Not affiliated with FIDE or Chess.com.</p>
+    </footer>
 </body>
 </html>
