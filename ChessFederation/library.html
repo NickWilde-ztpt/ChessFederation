@@ -24,7 +24,7 @@
         .subtitle { text-align: center; color: #cbd5e1; margin-bottom: 3rem; font-size: 1.1rem; }
         
         /* Video Cards Grid */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; padding: 1rem 0; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; padding: 1rem 0; }
         .card { 
             background-color: var(--primary); 
             border: 1px solid #334155;
@@ -32,7 +32,7 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            aspect-ratio: 1 / 1; /* Perfect Square */
+            aspect-ratio: 1 / 1; /* Perfect Square Card Shape */
             cursor: pointer; 
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
             transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
@@ -49,7 +49,7 @@
         .card-img { width: 100%; height: 100%; object-fit: cover; }
         
         /* Play Button Overlay Graphic */
-        .play-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; font-size: 3rem; transition: background 0.3s; }
+        .play-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; font-size: 3rem; transition: background 0.3s; }
         .card:hover .play-overlay { background: rgba(249, 115, 22, 0.2); }
         
         .card-title-box { 
@@ -62,7 +62,7 @@
             text-align: center;
             border-top: 1px solid #334155;
         }
-        .card h3 { font-size: 1.05rem; color: var(--light); font-weight: 600; }
+        .card h3 { font-size: 1.05rem; color: var(--light); font-weight: 600; line-height: 1.4; }
         .card:hover h3 { color: var(--secondary); }
         
         /* Video Pop-up Modal */
@@ -92,15 +92,13 @@
 
     <div class="container">
         <h2>Federation Masterclass</h2>
-        <p class="subtitle">Watch video analyses, openings breakdowns, and grandmaster match reviews.</p>
+        <p class="subtitle">Click a study card below to watch expert analyses right inside the arena.</p>
         
         <div class="grid">
-            <!-- VIDEO CARD 1 (FIDE Video Example) -->
-            <!-- To change the video, swap 'dQw4w9WgXcQ' below with any YouTube Video ID -->
-            <div class="card" onclick="playVideo('dQw4w9WgXcQ')">
+            <!-- VIDEO CARD 1 -->
+            <div class="card" onclick="playVideo('gbqgcDP6nL8')">
                 <div class="card-img-wrapper">
-                    <!-- Automatically pulls the high-quality YouTube thumbnail image -->
-                    <img src="https://youtube.com" alt="Video Thumbnail" class="card-img">
+                    <img src="https://youtube.com" alt="FIDE Highlights" class="card-img">
                     <div class="play-overlay">▶️</div>
                 </div>
                 <div class="card-title-box">
@@ -108,20 +106,42 @@
                 </div>
             </div>
 
-            <!-- VIDEO CARD 2 (Add more by duplicating this block) -->
-            <div class="card" onclick="playVideo('dQw4w9WgXcQ')">
+            <!-- VIDEO CARD 2 -->
+            <div class="card" onclick="playVideo('bPtdLUMurMY')">
                 <div class="card-img-wrapper">
-                    <img src="https://youtube.com" alt="Video Thumbnail" class="card-img">
+                    <img src="https://youtube.com" alt="Tactics Class" class="card-img">
                     <div class="play-overlay">▶️</div>
                 </div>
                 <div class="card-title-box">
-                    <h3>Essential Chess Openings Guide</h3>
+                    <h3>Elite Tactical Battle Review</h3>
+                </div>
+            </div>
+
+            <!-- VIDEO CARD 3 -->
+            <div class="card" onclick="playVideo('T1x5rmP4IPw')">
+                <div class="card-img-wrapper">
+                    <img src="https://youtube.com" alt="Masterclass" class="card-img">
+                    <div class="play-overlay">▶️</div>
+                </div>
+                <div class="card-title-box">
+                    <h3>Grandmaster Endgame Strategy</h3>
+                </div>
+            </div>
+
+            <!-- VIDEO CARD 4: MAGNUS CARLSEN FIRST WORLD CHAMPIONSHIP WIN -->
+            <div class="card" onclick="playVideo('2aE4XwZeNIs')">
+                <div class="card-img-wrapper">
+                    <img src="https://youtube.com" alt="Magnus Carlsen First Title" class="card-img">
+                    <div class="play-overlay">▶️</div>
+                </div>
+                <div class="card-title-box">
+                    <h3>Magnus Carlsen: The First World Title Win</h3>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- VIDEO PLAYER OVERLAY PANEL -->
+    <!-- POPUP PLAYER OVERLAY WINDOW -->
     <div id="videoModal" class="modal" onclick="stopVideo()">
         <span class="close-btn" onclick="stopVideo()">&times;</span>
         <div class="modal-content" onclick="event.stopPropagation()">
@@ -138,14 +158,13 @@
         const player = document.getElementById("youtubePlayer");
 
         function playVideo(videoLinkID) {
-            // Loads the YouTube video link safely inside our popup box frame
             player.src = "https://youtube.com" + videoLinkID + "?autoplay=1";
             modal.style.display = "flex";
             document.body.style.overflow = "hidden";
         }
 
         function stopVideo() {
-            player.src = ""; // Clears the video source so it stops playing music in the background
+            player.src = ""; 
             modal.style.display = "none";
             document.body.style.overflow = "auto";
         }
