@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-site-verification" content="IDVax4rPd-xzMl5sOR-O9dvgqIDr9Ot-d7LWjNNAX8U" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCF - Global Chess Federation</title>
+    <style>
+        :root {
+            --primary: #1e1b4b;     /* Deep volcanic slate */
+            --secondary: #f97316;   /* Fiery orange matching your logo */
+            --dark: #090514;        /* Dark obsidian background */
+            --light: #f8fafc;       /* Crisp ice white text */
+            --accent: #ef4444;      /* Intense red for badges */
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: sans-serif; 
+        }
+
+        body { 
+            background-color: var(--dark); 
+            color: var(--light); 
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh; 
+        }
+
+        header { 
+            background-color: var(--primary); 
+            padding: 1rem 2rem; 
+            border-bottom: 2px solid var(--secondary); 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+
+        .logo { 
+            font-size: 1.5rem; 
+            font-weight: bold; 
+            color: var(--secondary); 
+            text-decoration: none; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+        }
+
+        .logo-img { 
+            height: 40px; 
+            width: 40px; 
+            border-radius: 50%; 
+            border: 2px solid var(--secondary); 
+            object-fit: cover; 
+        }
+
+        nav a { 
+            color: var(--light); 
+            text-decoration: none; 
+            margin-left: 1.5rem; 
+            font-weight: 500; 
+        }
+
+        nav a:hover, nav a.active { 
+            color: var(--secondary); 
+        }
+
+        .container { 
+            max-width: 1100px; 
+            margin: auto; 
+            padding: 2rem 1rem; 
+            flex: 1; 
+            text-align: center; 
+        }
+
+        .hero { 
+            padding: 4rem 1rem; 
+            background: linear-gradient(rgba(9, 5, 20, 0.85), rgba(9, 5, 20, 0.85)), url('logo.png') center/cover; 
+            border-radius: 12px; 
+            border: 1px solid #334155; 
+        }
+
+        h1 { 
+            font-size: 3rem; 
+            margin-bottom: 1rem; 
+            color: var(--light); 
+        }
+
+        p { 
+            font-size: 1.2rem; 
+            color: #cbd5e1; 
+            margin-bottom: 2rem; 
+        }
+
+        .btn { 
+            background-color: var(--secondary); 
+            color: var(--dark); 
+            padding: 0.75rem 1.5rem; 
+            border: none; 
+            border-radius: 6px; 
+            font-weight: bold; 
+            text-decoration: none; 
+            display: inline-block; 
+            transition: transform 0.2s; 
+        }
+
+        .btn:hover { 
+            transform: translateY(-2px); 
+        }
+
+        .btn3 { 
+            background-color: var(--secondary); 
+            color: var(--dark); 
+            padding: 0.75rem 1.5rem; 
+            border: none; 
+            border-radius: 6px; 
+            font-weight: bold; 
+            text-decoration: none; 
+            display: inline-block; 
+            transition: transform 0.2s; 
+        }
+
+        /* --- Updated Larger Partners Section --- */
+        .partners-section {
+            margin-top: 5rem;
+            padding: 2rem 1rem;
+        }
+
+        .partners-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2.5rem;
+            color: var(--light);
+        }
+
+        .partners-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        /* Wrap anchor resetting text decoration line */
+        .partner-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Large card layout */
+        .partner-card {
+            background-color: var(--primary);
+            border: 1px solid #334155;
+            border-radius: 16px;
+            width: 380px;            
+            min-height: 340px;       
+            padding: 3rem 2rem;      
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* Scaled up image dimensions */
+        .card-img-wrapper {
+            width: 120px;            
+            height: 120px;           
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--secondary); 
+            background-color: var(--dark);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Larger text elements */
+        .card-content h3 {
+            color: var(--secondary);
+            font-size: 1.6rem;       
+            margin-bottom: 0.75rem;
+        }
+
+        .card-content p {
+            color: #cbd5e1;
+            font-size: 1.1rem;       
+            line-height: 1.5;
+            margin-bottom: 0; 
+        }
+
+        /* Enhanced Hover & Fiery Glow Animation */
+        .partner-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+            box-shadow: 0 15px 35px -5px rgba(249, 115, 22, 0.45), 
+                        0 10px 15px -6px rgba(249, 115, 22, 0.45);
+        }
+
+        footer { 
+            background-color: #020617; 
+            text-align: center; 
+            padding: 1.5rem; 
+            font-size: 0.85rem; 
+            color: #64748b; 
+            margin-top: auto; 
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="GCF Logo" class="logo-img" onerror="this.style.display='none'"> 
+            👑 GCF
+        </a>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="leaderboard.html">Leaderboard</a>
+            <a href="tournaments.html">Tournaments</a>
+            <a href="titles.html">Titles</a>
+            <a href="./about.html" style="color: #ff6b6b;">About</a>
+            <a href="champions.html">Champions</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Global Chess Federation</h1>
+            <p>The ultimate free-to-play online chess community. Compete, rank up, and earn titles.</p>
+            <a href="https://www.chess.com/club/global-chess-federation-gcf-official" target="_blank" class="btn">Join Our Chess.com Club</a>
+            <a href="videos.html" target="_blank" class="btn3">Visit our library</a>
+        </section>
+
+        <!-- Partners Section -->
+        <section class="partners-section">
+            <h2>Our Partners</h2>
+            <div class="partners-grid">
+                <!-- Large Clickable Partner Card -->
+                <a href="https://www.chess.com/club/the-cool-cat-club" target="_blank" class="partner-link">
+                    <div class="partner-card">
+                        <div class="card-img-wrapper">
+                            <img src="p1.png" alt="The Cool Cat Club">
+                        </div>
+                        <div class="card-content">
+                            <h3>Name: The Cool Cat Club</h3>
+                            <p>A massive Chess.com community with 700+ members, contributes to our federation.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 GCF. Disclaimer: Independent online gaming community. Not affiliated with FIDE or Chess.com.</p>
+    </footer>
+
+</body>
+</html>
