@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Titled Players - Global Chess Federation</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: #0b0d17;
+      color: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    /* Navbar matching your existing header */
+    nav {
+      background-color: #161836;
+      border-bottom: 2px solid #ff7a1a;
+      padding: 14px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .brand {
+      color: #ff7a1a;
+      font-weight: bold;
+      font-size: 1.2rem;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .nav-links a {
+      color: #e2e8f0;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: #ff7a1a;
+    }
+
+    /* Main Directory Container */
+    .container {
+      max-width: 1000px;
+      margin: 36px auto;
+      padding: 0 20px;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      color: #cbd5e1;
+      margin-bottom: 24px;
+    }
+
+    /* Search & Title Filter Controls */
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .search-box {
+      flex: 1;
+      min-width: 220px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid #2d325a;
+      background: #14172b;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+    .filter-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .filter-btn {
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1px solid #2d325a;
+      background: #14172b;
+      color: #cbd5e1;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: #ff7a1a;
+      color: #0b0d17;
+      border-color: #ff7a1a;
+    }
+
+    /* Player Cards Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 18px;
+    }
+    .card {
+      background: #14172b;
+      border: 1px solid #262b4d;
+      border-radius: 12px;
+      padding: 20px;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: #ff7a1a;
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .title-badge {
+      background: #ff7a1a;
+      color: #0b0d17;
+      font-weight: bold;
+      font-size: 0.8rem;
+      padding: 3px 8px;
+      border-radius: 5px;
+      white-space: nowrap;
+    }
+    .player-name {
+      font-size: 1.15rem;
+      font-weight: bold;
+    }
+    .stats {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      margin-bottom: 10px;
+    }
+    .bio {
+      font-size: 0.92rem;
+      color: #e2e8f0;
+      margin-bottom: 14px;
+    }
+    .profile-link {
+      display: inline-block;
+      color: #ff7a1a;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+    .profile-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="brand">👑 GCF</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="leaderboard.html">Leaderboard</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="titles.html">Titles</a>
+      <a href="players.html" class="active">Players</a>
+      <a href="about.html">About</a>
+      <a href="champions.html">Champions</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1>Titled Players Directory</h1>
+    <p class="subtitle">Official roster of federation members who have earned GCF titles.</p>
+
+    <div class="controls">
+      <input type="text" id="searchInput" class="search-box" placeholder="Search player name..." />
+      <div class="filter-btns">
+        <button class="filter-btn active" data-title="ALL">All</button>
+        <button class="filter-btn" data-title="GM">GCF GM</button>
+        <button class="filter-btn" data-title="IM">GCF IM</button>
+        <button class="filter-btn" data-title="FM">GCF FM</button>
+        <button class="filter-btn" data-title="CM">GCF CM</button>
+        <button class="filter-btn" data-title="GCFI">GCF I</button>
+      </div>
+    </div>
+
+    <div id="playersGrid" class="grid"></div>
+  </main>
+
+  <script>
+    const TITLE_PREFIX = "GCF";
+
+    function formatTitle(title) {
+      if (!title) return "";
+      const clean = title.trim();
+      return clean.toUpperCase().startsWith(TITLE_PREFIX.toUpperCase() + " ")
+        ? clean
+        : `${TITLE_PREFIX} ${clean}`;
+    }
+
+    // Add or edit your titled players right here:
+    const players = [
+      {
+        name: "Jayanth G",
+        title: "I",
+        rating: 1966,
+        role: "Federation #1",
+        bio: "Dominating player of GCF",
+        profileUrl: "https://www.chess.com/member/jayanth-g"
+      },
+      {
+        name: "dfvffhhdty",
+        title: "I",
+        rating: 1465,
+        role: "Federation #2",
+        bio: "Federation's Admin",
+        profileUrl: "https://www.chess.com/member/dfvffhhdty"
+      }
+    ];
+
+    const grid = document.getElementById("playersGrid");
+    const searchInput = document.getElementById("searchInput");
+    const filterBtns = document.querySelectorAll(".filter-btn");
+    let currentFilter = "ALL";
+
+    function renderPlayers() {
+      const query = searchInput.value.toLowerCase();
+      const filtered = players.filter(p => {
+        const matchesTitle = currentFilter === "ALL" || p.title === currentFilter;
+        const formattedTitle = formatTitle(p.title).toLowerCase();
+        const matchesQuery =
+          p.name.toLowerCase().includes(query) ||
+          p.role.toLowerCase().includes(query) ||
+          formattedTitle.includes(query);
+        return matchesTitle && matchesQuery;
+      });
+
+      grid.innerHTML = filtered.map(p => `
+        <div class="card">
+          <div class="card-header">
+            <span class="title-badge">${formatTitle(p.title)}</span>
+            <span class="player-name">${p.name}</span>
+          </div>
+          <div class="stats">GCF Rating: <strong>${p.rating}</strong> • ${p.role}</div>
+          <p class="bio">${p.bio}</p>
+          <a href="${p.profileUrl}" target="_blank" class="profile-link">View Chess.com Profile →</a>
+        </div>
+      `).join("");
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentFilter = btn.dataset.title;
+        renderPlayers();
+      });
+    });
+
+    searchInput.addEventListener("input", renderPlayers);
+    renderPlayers();
+  </script>
+</body>
+</html>
