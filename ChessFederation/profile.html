@@ -181,7 +181,7 @@
         <button class="filter-btn" data-title="IM">GCF IM</button>
         <button class="filter-btn" data-title="FM">GCF FM</button>
         <button class="filter-btn" data-title="CM">GCF CM</button>
-        <button class="filter-btn" data-title="GCFI">GCF I</button>
+        <button class="filter-btn" data-title="I">GCF I</button>
       </div>
     </div>
 
@@ -216,7 +216,7 @@
         role: "Federation #3",
         bio: "Federation's Admin",
         profileUrl: "https://www.chess.com/member/dfvffhhdty"
-      }
+      },
       {
         name: "Autistic_plays",
         title: "I",
@@ -224,8 +224,8 @@
         role: "Federation #4",
         bio: "",
         profileUrl: "https://www.chess.com/member/autistic_plays"
-      }
-    {
+      },
+      {
         name: "Pokemon_nerd67",
         title: "I",
         rating: 1556,
@@ -241,7 +241,7 @@
     let currentFilter = "ALL";
 
     function renderPlayers() {
-      const query = searchInput.value.toLowerCase();
+      const query = searchInput.value.toLowerCase().trim();
       const filtered = players.filter(p => {
         const matchesTitle = currentFilter === "ALL" || p.title === currentFilter;
         const formattedTitle = formatTitle(p.title).toLowerCase();
@@ -251,6 +251,18 @@
           formattedTitle.includes(query);
         return matchesTitle && matchesQuery;
       });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="card">
+            <div class="card-header">
+              <span class="player-name">No players found</span>
+            </div>
+            <p class="bio">No titled players match your current search or title filter.</p>
+          </div>
+        `;
+        return;
+      }
 
       grid.innerHTML = filtered.map(p => `
         <div class="card">
